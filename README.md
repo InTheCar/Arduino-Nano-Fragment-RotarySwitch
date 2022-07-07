@@ -6,7 +6,7 @@
 # Current calculation
  It's a single-pole switch with 11 positions. Between the positions a 1K
  resistor is used.
- ![](C:\Users\LuebboTerHell\PycharmProjects\Arduino-Nano-Fragment-RotarySwitch\pictures\RotarySwitchNew.png)
+ ![](pictures\RotarySwitchNew.png)
 
 
 
