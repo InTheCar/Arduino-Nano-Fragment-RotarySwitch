@@ -10,6 +10,10 @@
  ![RotarySwitchNew.png](https://github.com/InTheCar/Arduino-Nano-Fragment-RotarySwitch/blob/main/pictures/RotarySwitchNew.png)
  ![RotarySwitchWithResistors.png](https://github.com/InTheCar/Arduino-Nano-Fragment-RotarySwitch/blob/main/pictures/RotarySwitchWithResistors.png)
 
+ The resistors are connected in series at 5V
+ The total is 10 x 1k = 10k
+ I=5V/10k=0,5mA
+ 
 
 
 
