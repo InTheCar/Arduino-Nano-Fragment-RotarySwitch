@@ -1,51 +1,89 @@
-#include <TimerOne.h>
-#define PIN_LED 13
+// For 2 rotary switches
+int SW1_PIN = A1;
+int SW2_PIN = A2;
+
+
 void setup() {
-  Serial.begin(38400);
-  pinMode(PIN_LED, OUTPUT);
-  Timer1.initialize(500000);
-  Timer1.attachInterrupt(led_handle);
+  Serial.begin(38400); //serial speed UART Interface
 }
-int saved_switch_position=0;
+//int saved_switch_position=0;
 void loop() {
-  static int saved_switch_position=0;
-  static int actual_switch_position =0;
-  actual_switch_position=get_switch_11_level(A0);
+  static int SW1_saved_switch_position=get_switch_11_level(SW1_PIN);
+  static int SW1_actual_switch_position =0;
+  
+  static int SW2_saved_switch_position=get_switch_11_level(SW2_PIN);
+  static int SW2_actual_switch_position =0;
+
+  SW1_actual_switch_position=get_switch_11_level(SW1_PIN);
+  SW2_actual_switch_position=get_switch_11_level(SW2_PIN);
+//  actual_switch_position=get_switch_11_level(A2);
   delay(200);
-  if(actual_switch_position !=  get_switch_11_level(A0)){
-    actual_switch_position = saved_switch_position;
+  if(SW1_actual_switch_position !=  get_switch_11_level(SW1_PIN)){
+    SW1_actual_switch_position = SW1_saved_switch_position;
   }
-  if (saved_switch_position != actual_switch_position){
-    saved_switch_position = actual_switch_position;
-    switch(actual_switch_position){
-      case 1: Serial.println("Switch position 1");
+  if (SW1_saved_switch_position != SW1_actual_switch_position){
+    SW1_saved_switch_position = SW1_actual_switch_position;
+    switch(SW1_actual_switch_position){
+      case 1: Serial.println("Switch " + String(SW1_PIN) + " position 1");
         break;
-      case 2: Serial.println("Switch position 2");
+      case 2: Serial.println("Switch " + String(SW1_PIN) + " position 2");
         break;
-      case 3: Serial.println("Switch position 3");
+      case 3: Serial.println("Switch " + String(SW1_PIN) + " position 3");
         break;
-      case 4: Serial.println("Switch position 4");
+      case 4: Serial.println("Switch " + String(SW1_PIN) + " position 4");
         break;
-      case 5: Serial.println("Switch position 5");
+      case 5: Serial.println("Switch " + String(SW1_PIN) + " position 5");
         break;
-      case 6: Serial.println("Switch position 6");
+      case 6: Serial.println("Switch " + String(SW1_PIN) + " position 6");
         break;
-      case 7: Serial.println("Switch position 7");
+      case 7: Serial.println("Switch " + String(SW1_PIN) + " position 7");
         break;
-      case 8: Serial.println("Switch position 8");
+      case 8: Serial.println("Switch " + String(SW1_PIN) + " position 8");
         break;
-      case 9: Serial.println("Switch position 9");
+      case 9: Serial.println("Switch " + String(SW1_PIN) + " position 9");
         break;
-      case 10: Serial.println("Switch position 10");
+      case 10: Serial.println("Switch " + String(SW1_PIN) + " position 10");
         break;
-      case 11: Serial.println("Switch position 11");
+      case 11: Serial.println("Switch " + String(SW1_PIN) + " position 11");
         break;
     }
   }
+    if(SW2_actual_switch_position !=  get_switch_11_level(SW2_PIN)){
+    SW2_actual_switch_position = SW2_saved_switch_position;
+  }
+  if (SW2_saved_switch_position != SW2_actual_switch_position){
+    SW2_saved_switch_position = SW2_actual_switch_position;
+    switch(SW2_actual_switch_position){
+      case 1: Serial.println("Switch " + String(SW2_PIN) + " position 1");
+        break;
+      case 2: Serial.println("Switch " + String(SW2_PIN) + " position 2");
+        break;
+      case 3: Serial.println("Switch " + String(SW2_PIN) + " position 3");
+        break;
+      case 4: Serial.println("Switch " + String(SW2_PIN) + " position 4");
+        break;
+      case 5: Serial.println("Switch " + String(SW2_PIN) + " position 5");
+        break;
+      case 6: Serial.println("Switch " + String(SW2_PIN) + " position 6");
+        break;
+      case 7: Serial.println("Switch " + String(SW2_PIN) + " position 7");
+        break;
+      case 8: Serial.println("Switch " + String(SW2_PIN) + " position 8");
+        break;
+      case 9: Serial.println("Switch " + String(SW2_PIN) + " position 9");
+        break;
+      case 10: Serial.println("Switch " + String(SW2_PIN) + " position 10");
+        break;
+      case 11: Serial.println("Switch " + String(SW2_PIN) + " position 11");
+        break;
+    }
+
+  
+  }
 //  Serial.println(String(get_switch_11_level(A0)));
   
-  
 }
+
 int get_switch_11_level(int AD_Wandler){
   int return_value = 0;
   int x = analogRead(AD_Wandler);
@@ -84,11 +122,3 @@ int get_switch_11_level(int AD_Wandler){
   }
 return(return_value);
 }
-void led_handle(void){
-  if (digitalRead(PIN_LED) == LOW) {
-    digitalWrite(PIN_LED, HIGH);
-  } else {
-    digitalWrite(PIN_LED, LOW);
-  }
-}
-//int switch_position
